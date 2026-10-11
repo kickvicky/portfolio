@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your skills and projects with a striking personal portfolio designed for backend engineers, featuring bold visuals and interactive elements.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
