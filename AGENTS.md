@@ -1,41 +1,52 @@
-# figma-make-app
+# personal-portfolio
 
-React + Vite + Tailwind CSS project running inside Figma Make.
+Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel in server mode.
 
-## Development Server
+## Commands
 
-A Vite development server is **already running** on `$PORT` (default 8443). You don't need to start it manually.
+- `pnpm dev` — dev server on http://localhost:3000 (Turbopack, hot reload)
+- `pnpm build` — production build into `.next/`
+- `pnpm start` — serve the production build locally
+- `pnpm typecheck` — `tsc --noEmit`
+- `pnpm format` — oxfmt
 
-- Preview URL: The user can access the running app through the preview panel
-- Hot reload: Changes to source files are reflected immediately
+## Project structure
 
-## Project Structure
+- `src/app/layout.tsx` — root layout: fonts (`next/font`), site-wide metadata, imports `globals.css`
+- `src/app/page.tsx` — home page; composes the section components
+- `src/app/projects/[slug]/page.tsx` — case study pages, statically generated via `generateStaticParams`
+- `src/app/not-found.tsx`, `robots.ts`, `sitemap.ts`, `icon.svg` — 404 page, SEO files, favicon
+- `src/app/opengraph-image.tsx`, `src/app/projects/[slug]/opengraph-image.tsx` — social preview PNGs generated at build time; shared pieces in `src/lib/og.tsx` (inline styles only, no Tailwind)
+- `src/assets/fonts/*.woff` — font files for the OG images (Satori can't use `next/font` or woff2)
+- `src/app/globals.css` — Tailwind import + all custom CSS classes
+- `src/actions/contact.ts` — Server Action for the contact form (sends email via Resend)
+- `src/components/home/*` — home page sections
+- `src/components/projects/*` — project card, art, architecture diagram, detail view
+- `src/components/contact/ContactForm.tsx` — the only Client Component (`"use client"`)
+- `src/components/icons/*` — SVG icons
+- `src/data/*` — site content (projects, roles, hobbies). Edit content here, not in components.
+- `src/lib/site.ts` — site name, URL, email, socials, indexing flag
 
-This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
+## Conventions
 
-- `src/main.tsx` - React entrypoint; imports `src/index.css` and mounts `src/App.tsx` into the `#root` element
-- `src/App.tsx` - Primary application component and the usual starting point for UI work
-- `src/index.css` - Global CSS entrypoint and Tailwind CSS v4 import
-- `index.html` - Vite HTML shell containing the `#root` element and loading `src/main.tsx`
-- `package.json` - Project dependencies and the Vite build, development, preview, and formatting scripts
-- `vite.config.ts` - Vite configuration with React, Tailwind CSS v4, and Figma Make plugins plus the `@` alias for `src`
-- `.mise.toml` - Toolchain versions for Node.js and pnpm
+- Components are Server Components by default. Add `"use client"` only when a component needs state, effects, or browser APIs.
+- Export components as default exports. Import via the `@/` alias (maps to `src/`).
+- Adding a project = adding an entry to `src/data/projects.ts` with a unique `slug`; routes, sitemap and metadata update automatically.
+- Use `next/link` for internal navigation and `next/image` for images (add remote hosts to `next.config.ts`).
+- Styling: Tailwind utilities in JSX; shared/complex styles as classes in `globals.css`. No Tailwind config file — use `@theme` in `globals.css` for theme tokens.
+- Fonts are exposed as CSS variables `--font-space-grotesk` and `--font-space-mono`.
+- In JSX text, escape apostrophes as `&apos;`. In strings, use double quotes when the text contains an apostrophe.
 
-## Dependencies
+## Environment variables
 
-- Runtime: React 19 and React DOM 19
-- Styling: Tailwind CSS v4 with the `@tailwindcss/vite` plugin
-- Build tooling: Vite 8, TypeScript 5.7, and `@vitejs/plugin-react`
-- Formatting: oxfmt
+See `.env.example`. Secrets go in `.env.local` (git-ignored) locally and in Vercel project settings in production.
 
-## Styling
+<!-- BEGIN:nextjs-agent-rules -->
 
-This project uses **Tailwind CSS v4** through the `@tailwindcss/vite` plugin configured in `vite.config.ts`. `src/index.css` imports Tailwind with `@import 'tailwindcss';`. Use Tailwind utility classes directly in JSX and put global CSS or Tailwind v4 theme customization in `src/index.css`. This scaffold does not need a Tailwind config file or PostCSS config.
+## This is NOT the Next.js you know
 
-`src/main.tsx` imports `src/index.css`, so global font wiring belongs in `src/index.css`. Keep CSS `@import` statements first, then add any `@font-face` rules and font-family defaults there.
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
-## Code quality
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
-- Use double quotes for strings containing apostrophes (`"We're here to help"`), or escape them in single-quoted strings. An unescaped apostrophe in a single-quoted string breaks the build.
-- Ensure JSX tags are closed and braces are balanced.
-- Export components as default exports.
+<!-- END:nextjs-agent-rules -->
