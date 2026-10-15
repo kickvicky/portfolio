@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/home/SectionHeading";
 import { roles } from "@/data/roles";
+import { accentBg } from "@/lib/theme";
 
 export default function Experience() {
   return (
@@ -12,7 +13,7 @@ export default function Experience() {
         {roles.map((role, index) => (
           <article key={role.date} className="timeline-row">
             <div className="timeline-date">{role.date}</div>
-            <div className={`timeline-node ${role.color}`}>
+            <div className={`timeline-node ${accentBg[role.color]}`}>
               <span>{String(index + 1).padStart(2, "0")}</span>
             </div>
             <div className="brutal-card timeline-card">
@@ -22,7 +23,7 @@ export default function Experience() {
                   <p className="font-mono text-xs font-bold">{role.company}</p>
                 </div>
                 {index === 0 && (
-                  <span className="border-2 border-black bg-[#b8ff69] px-2 py-1 font-mono text-[10px] font-bold">CURRENT</span>
+                  <span className="border-2 border-black bg-lime px-2 py-1 font-mono text-[10px] font-bold">CURRENT</span>
                 )}
               </div>
               <p className="max-w-2xl text-lg font-medium leading-snug">{role.copy}</p>

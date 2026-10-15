@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import { site } from "@/lib/site";
+import { colors } from "@/lib/theme";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f8f5ec",
+  themeColor: colors.paper,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

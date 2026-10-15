@@ -19,7 +19,7 @@ export default function ContactForm() {
   // tag inputs and buttons with their own attributes before hydration. These elements have no
   // server/client-dependent attributes, so silencing attribute mismatches here hides nothing real.
   return (
-    <form className="relative space-y-5 bg-[#f8f5ec] p-7" action={formAction}>
+    <form className="relative space-y-5 bg-paper p-7" action={formAction}>
       <label className="field">
         <span>01 / YOUR NAME</span>
         <input
@@ -73,7 +73,7 @@ export default function ContactForm() {
       </p>
 
       <button
-        className="brutal-button flex w-full items-center justify-between bg-[#ffea00] px-5 py-4 font-mono text-xs font-black uppercase disabled:opacity-60"
+        className="brutal-button flex w-full items-center justify-between bg-yellow px-5 py-4 font-mono text-xs font-black uppercase disabled:opacity-60"
         type="submit"
         disabled={pending}
         suppressHydrationWarning

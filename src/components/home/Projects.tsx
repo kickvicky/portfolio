@@ -3,10 +3,10 @@ import { projects } from "@/data/projects";
 
 export default function Projects() {
   return (
-    <section id="projects" className="border-y-4 border-black bg-[#111] px-4 py-24 text-white md:px-8 lg:px-14">
+    <section id="projects" className="border-y-4 border-black bg-charcoal px-4 py-24 text-white md:px-8 lg:px-14">
       <header className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
-          <p className="eyebrow text-[#b8ff69]">// THINGS I SHIPPED</p>
+          <p className="eyebrow text-lime">// THINGS I SHIPPED</p>
           <h2 className="section-title text-white">PROJECT<br />FILES.</h2>
         </div>
         <p className="max-w-sm font-mono text-xs leading-relaxed text-white/70">

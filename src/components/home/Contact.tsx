@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export default function Contact() {
   return (
-    <section id="contact" className="border-t-4 border-black bg-[#ff4fa3] px-4 py-24 md:px-8">
+    <section id="contact" className="border-t-4 border-black bg-pink px-4 py-24 md:px-8">
       <div className="mx-auto max-w-5xl">
         <p className="mb-5 text-center font-mono text-xs font-black uppercase">// Connection request pending</p>
         <h2 className="mb-12 text-center font-display text-5xl font-black leading-[0.8] tracking-[-0.07em] sm:text-7xl md:text-9xl">
@@ -15,13 +15,13 @@ export default function Contact() {
             <div className="flex gap-2" aria-hidden="true">
               <button type="button" tabIndex={-1}>_</button>
               <button type="button" tabIndex={-1}>□</button>
-              <button type="button" tabIndex={-1} className="bg-[#ffea00]">×</button>
+              <button type="button" tabIndex={-1} className="bg-yellow">×</button>
             </div>
           </div>
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="border-b-4 border-black bg-[#111] p-7 text-white lg:border-b-0 lg:border-r-4">
+            <div className="border-b-4 border-black bg-charcoal p-7 text-white lg:border-b-0 lg:border-r-4">
               <p className="font-display text-3xl font-black leading-none">
-                LET&apos;S BUILD<br />SOMETHING<br /><span className="text-[#b8ff69]">SOLID.</span>
+                LET&apos;S BUILD<br />SOMETHING<br /><span className="text-lime">SOLID.</span>
               </p>
               <p className="mt-6 max-w-xs font-mono text-xs leading-relaxed text-white/70">
                 Have a hard systems problem, an interesting role, or a very specific coffee recommendation?

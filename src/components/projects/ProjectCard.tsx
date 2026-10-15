@@ -2,6 +2,7 @@ import Link from "next/link";
 import Arrow from "@/components/icons/Arrow";
 import ProjectArt from "@/components/projects/ProjectArt";
 import type { Project } from "@/data/projects";
+import { accentBg } from "@/lib/theme";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -9,7 +10,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="project-art">
         <ProjectArt type={project.art} />
       </div>
-      <div className={`${project.color} border-t-4 border-black p-5 text-black`}>
+      <div className={`${accentBg[project.color]} border-t-4 border-black p-5 text-black`}>
         <div className="mb-5 flex justify-between font-mono text-[10px] font-black">
           <span>FILE_{project.number}</span>
           <span>{project.tag}</span>

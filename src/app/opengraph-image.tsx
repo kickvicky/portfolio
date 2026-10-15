@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
-import { OgCanvas, OgChip, OgWordmark, ogContentType, ogFonts, ogSize, palette } from "@/lib/og";
+import { OgCanvas, OgChip, OgWordmark, ogContentType, ogFonts, ogSize } from "@/lib/og";
 import { site } from "@/lib/site";
+import { colors } from "@/lib/theme";
 
 // Default social preview for the home page (and any route without its own opengraph-image).
 export const alt = `${site.name} — Backend Engineer building distributed systems`;
@@ -17,7 +18,7 @@ export default async function Image() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <OgWordmark />
             <div style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: "Space Mono", fontSize: 20, fontWeight: 700 }}>
-              <div style={{ display: "flex", width: 18, height: 18, border: `3px solid ${palette.ink}`, background: palette.lime }} />
+              <div style={{ display: "flex", width: 18, height: 18, border: `3px solid ${colors.ink}`, background: colors.lime }} />
               AVAILABLE FOR AMBITIOUS BUILDS
             </div>
           </div>
@@ -35,13 +36,13 @@ export default async function Image() {
           >
             <div style={{ display: "flex" }}>VIGNESH</div>
             <div style={{ display: "flex" }}>
-              ANNAMALAI<span style={{ color: palette.pink }}>.DEV</span>
+              ANNAMALAI<span style={{ color: colors.pink }}>.DEV</span>
             </div>
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", marginTop: 40, fontSize: 36, fontWeight: 700, letterSpacing: "-0.03em" }}>
             Backend Engineer at
-            <span style={{ display: "flex", margin: "0 12px", padding: "0 8px", background: palette.yellow }}>Walmart Global Tech</span>
+            <span style={{ display: "flex", margin: "0 12px", padding: "0 8px", background: colors.yellow }}>Walmart Global Tech</span>
             building distributed systems.
           </div>
         </div>
@@ -51,8 +52,8 @@ export default async function Image() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: `5px solid ${palette.ink}`,
-            background: palette.yellow,
+            borderTop: `5px solid ${colors.ink}`,
+            background: colors.yellow,
             padding: "22px 64px",
             fontFamily: "Space Mono",
             fontSize: 24,
@@ -62,7 +63,7 @@ export default async function Image() {
           <div style={{ display: "flex", gap: 18 }}>
             {stack.map((item, index) => (
               <div key={item} style={{ display: "flex", gap: 18 }}>
-                {index > 0 && <span style={{ color: palette.pink }}>//</span>}
+                {index > 0 && <span style={{ color: colors.pink }}>//</span>}
                 {item}
               </div>
             ))}

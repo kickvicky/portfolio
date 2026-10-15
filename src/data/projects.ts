@@ -1,3 +1,5 @@
+import type { Accent } from "@/lib/theme";
+
 export type ProjectArtType = "map" | "stream" | "cache";
 
 export type Project = {
@@ -6,7 +8,7 @@ export type Project = {
   title: string;
   tag: string;
   description: string;
-  color: string;
+  color: Accent;
   art: ProjectArtType;
   year: string;
   stack: string[];
@@ -31,7 +33,7 @@ export const projects: Project[] = [
     title: "GEO//PULSE",
     tag: "POSTGIS · GO",
     description: "A real-time spatial analytics engine processing 2M+ location events every hour.",
-    color: "bg-[#b8ff69]",
+    color: "lime",
     art: "map",
     year: "2024",
     stack: ["Go", "PostGIS", "Kafka", "Redis", "Kubernetes", "OpenTelemetry"],
@@ -53,7 +55,7 @@ export const projects: Project[] = [
     title: "STREAMCTRL",
     tag: "KAFKA · REACT",
     description: "An observability console that makes event-driven systems readable at a glance.",
-    color: "bg-[#ffea00]",
+    color: "yellow",
     art: "stream",
     year: "2024",
     stack: ["React", "TypeScript", "Kafka", "WebSockets", "ClickHouse", "Docker"],
@@ -75,7 +77,7 @@ export const projects: Project[] = [
     title: "CACHE//OUT",
     tag: "REDIS · GO",
     description: "A resilient distributed cache with smart eviction and zero-downtime failover.",
-    color: "bg-[#ff4fa3]",
+    color: "pink",
     art: "cache",
     year: "2024",
     stack: ["Go", "Redis", "gRPC", "Raft", "Prometheus", "Terraform"],

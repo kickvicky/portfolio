@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Arrow from "@/components/icons/Arrow";
 import type { Project } from "@/data/projects";
+import { accentBg } from "@/lib/theme";
 
 export default function ArchitectureDiagram({ project }: { project: Project }) {
   return (
@@ -9,7 +10,7 @@ export default function ArchitectureDiagram({ project }: { project: Project }) {
       <div className="architecture-flow">
         {project.architecture.map((label, index) => (
           <Fragment key={label}>
-            <div className={`architecture-node ${index === 1 ? project.color : "bg-white"}`}>
+            <div className={`architecture-node ${accentBg[index === 1 ? project.color : "white"]}`}>
               <span className="font-mono text-[9px] font-bold">NODE_{String(index + 1).padStart(2, "0")}</span>
               <strong>{label}</strong>
               <span className="status-dot">LIVE</span>

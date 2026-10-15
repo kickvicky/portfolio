@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { getProject, projects } from "@/data/projects";
-import { OgCanvas, OgChip, OgWordmark, hexFromBgClass, ogContentType, ogFonts, ogSize, palette } from "@/lib/og";
+import { OgCanvas, OgChip, OgWordmark, ogContentType, ogFonts, ogSize } from "@/lib/og";
 import { site } from "@/lib/site";
+import { colors } from "@/lib/theme";
 
 // Per-project social preview: one PNG per slug, generated at build time from src/data/projects.ts.
 export const alt = `Project case study — ${site.name}`;
@@ -17,7 +18,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const project = getProject(slug);
   if (!project) return new Response("Not found", { status: 404 });
 
-  const accent = hexFromBgClass(project.color);
+  const accent = colors[project.color];
 
   return new ImageResponse(
     (
@@ -28,9 +29,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               display: "flex",
               flex: 1,
               flexDirection: "column",
-              border: `5px solid ${palette.ink}`,
-              background: "#fff",
-              boxShadow: `14px 14px 0 ${palette.ink}`,
+              border: `5px solid ${colors.ink}`,
+              background: colors.white,
+              boxShadow: `14px 14px 0 ${colors.ink}`,
             }}
           >
             <div style={{ display: "flex", flex: 1, flexDirection: "column", padding: "34px 44px 0" }}>
@@ -59,14 +60,14 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: 24,
-                borderTop: `5px solid ${palette.ink}`,
+                borderTop: `5px solid ${colors.ink}`,
                 background: accent,
                 padding: "20px 44px",
               }}
             >
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                 {project.stack.slice(0, 5).map((technology) => (
-                  <OgChip key={technology} background={palette.paper} color={palette.ink}>
+                  <OgChip key={technology} background={colors.paper} color={colors.ink}>
                     {technology.toUpperCase()}
                   </OgChip>
                 ))}

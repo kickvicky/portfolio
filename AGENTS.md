@@ -26,6 +26,7 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - `src/components/icons/*` — SVG icons
 - `src/data/*` — site content (projects, roles, hobbies). Edit content here, not in components.
 - `src/lib/site.ts` — site name, URL, email, socials, indexing flag
+- `src/lib/theme.ts` — TS mirror of the `@theme` colours (for OG images / meta tags) + `Accent` type and `accentBg` class map
 
 ## Conventions
 
@@ -34,6 +35,8 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - Adding a project = adding an entry to `src/data/projects.ts` with a unique `slug`; routes, sitemap and metadata update automatically.
 - Use `next/link` for internal navigation and `next/image` for images (add remote hosts to `next.config.ts`).
 - Styling: Tailwind utilities in JSX; shared/complex styles as classes in `globals.css`. No Tailwind config file — use `@theme` in `globals.css` for theme tokens.
+- Colours: use the brand tokens (`ink`, `paper`, `charcoal`, `yellow`, `lime`, `pink`) — e.g. `bg-yellow`, `text-pink`, `var(--color-ink)` in CSS. No raw hex / `bg-[#…]` arbitrary values. Adding or changing a colour means updating both `@theme` in `globals.css` and `colors` in `src/lib/theme.ts`.
+- Content entries pick colours by token name (`color: "lime"`, typed as `Accent`); components map it to a class with `accentBg[...]`. Never build class names dynamically (`bg-${x}`) — Tailwind can't detect them.
 - Fonts are exposed as CSS variables `--font-space-grotesk` and `--font-space-mono`.
 - In JSX text, escape apostrophes as `&apos;`. In strings, use double quotes when the text contains an apostrophe.
 

@@ -10,7 +10,7 @@ export default function Hero() {
         <span>/ 04</span>
       </div>
       <div className="mb-5 flex items-center gap-3 font-mono text-xs font-bold uppercase">
-        <span className="inline-block h-3 w-3 animate-pulse border-2 border-black bg-[#b8ff69]" />
+        <span className="inline-block h-3 w-3 animate-pulse border-2 border-black bg-lime" />
         Available for ambitious builds
       </div>
       <h1 className="hero-title hero-title-long max-w-[1400px]">
@@ -18,7 +18,7 @@ export default function Hero() {
         <br />
         <span className="relative inline-block">
           ANNAMALAI
-          <Star className="absolute -right-20 -top-3 hidden w-16 rotate-12 text-[#ffea00] sm:block md:w-24" />
+          <Star className="absolute -right-20 -top-3 hidden w-16 rotate-12 text-yellow sm:block md:w-24" />
         </span>
         <span className="text-stroke"> .DEV</span>
       </h1>
@@ -27,7 +27,7 @@ export default function Hero() {
           <a href="#projects" className="brutal-button flex items-center gap-4 bg-black px-6 py-4 font-mono text-sm font-black uppercase text-white">
             View my work <Arrow />
           </a>
-          <a href="#contact" className="brutal-button flex items-center gap-4 bg-[#b8ff69] px-6 py-4 font-mono text-sm font-black uppercase">
+          <a href="#contact" className="brutal-button flex items-center gap-4 bg-lime px-6 py-4 font-mono text-sm font-black uppercase">
             Contact me <Arrow diagonal />
           </a>
         </div>

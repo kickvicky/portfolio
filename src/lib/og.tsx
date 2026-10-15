@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { ReactNode } from "react";
+import { colors } from "@/lib/theme";
 
 // Shared building blocks for the generated social preview images (opengraph-image.tsx files).
 // ImageResponse renders with Satori: inline styles only (no Tailwind / globals.css), flexbox layout,
@@ -8,14 +9,6 @@ import type { ReactNode } from "react";
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
-
-export const palette = {
-  ink: "#090909",
-  paper: "#f8f5ec",
-  yellow: "#ffea00",
-  lime: "#b8ff69",
-  pink: "#ff4fa3",
-};
 
 // Satori needs raw font files (ttf/otf/woff — not woff2). Read once per build, at module scope.
 const fontDir = join(process.cwd(), "src/assets/fonts");
@@ -34,13 +27,8 @@ export async function ogFonts() {
   ];
 }
 
-/** Pulls the hex value out of a Tailwind arbitrary class like `bg-[#b8ff69]`. */
-export function hexFromBgClass(className: string, fallback = palette.yellow): string {
-  return className.match(/#[0-9a-f]{3,8}/i)?.[0] ?? fallback;
-}
-
 /** Cream page with the site's faint graph-paper grid. */
-export function OgCanvas({ children, background = palette.paper }: { children: ReactNode; background?: string }) {
+export function OgCanvas({ children, background = colors.paper }: { children: ReactNode; background?: string }) {
   return (
     <div
       style={{
@@ -52,7 +40,7 @@ export function OgCanvas({ children, background = palette.paper }: { children: R
         backgroundImage:
           "linear-gradient(rgba(10,10,10,0.085) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.085) 1px, transparent 1px)",
         backgroundSize: "28px 28px",
-        color: palette.ink,
+        color: colors.ink,
         fontFamily: "Space Grotesk",
       }}
     >
@@ -62,12 +50,12 @@ export function OgCanvas({ children, background = palette.paper }: { children: R
 }
 
 /** Black monospace label chip, e.g. "CASE STUDY". */
-export function OgChip({ children, background = palette.ink, color = "#fff" }: { children: ReactNode; background?: string; color?: string }) {
+export function OgChip({ children, background = colors.ink, color = colors.white }: { children: ReactNode; background?: string; color?: string }) {
   return (
     <div
       style={{
         display: "flex",
-        border: `3px solid ${palette.ink}`,
+        border: `3px solid ${colors.ink}`,
         background,
         color,
         padding: "6px 14px",
@@ -85,7 +73,7 @@ export function OgChip({ children, background = palette.ink, color = "#fff" }: {
 export function OgWordmark({ size = 34 }: { size?: number }) {
   return (
     <div style={{ display: "flex", fontSize: size, fontWeight: 700, letterSpacing: "-0.06em" }}>
-      VA<span style={{ color: palette.pink }}>.</span>DEV
+      VA<span style={{ color: colors.pink }}>.</span>DEV
     </div>
   );
 }

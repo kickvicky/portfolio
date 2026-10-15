@@ -2,14 +2,15 @@ import Link from "next/link";
 import Arrow from "@/components/icons/Arrow";
 import ArchitectureDiagram from "@/components/projects/ArchitectureDiagram";
 import type { Project } from "@/data/projects";
+import { accentBg } from "@/lib/theme";
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
     <main className="project-detail min-h-screen">
-      <div className="border-b-4 border-black bg-[#f8f5ec] px-4 py-5 md:px-8 lg:px-14">
+      <div className="border-b-4 border-black bg-paper px-4 py-5 md:px-8 lg:px-14">
         <Link
           href="/"
-          className="brutal-button inline-flex items-center gap-3 bg-[#ffea00] px-5 py-3 font-mono text-xs font-black uppercase"
+          className="brutal-button inline-flex items-center gap-3 bg-yellow px-5 py-3 font-mono text-xs font-black uppercase"
         >
           <span className="rotate-180"><Arrow /></span> Back to home
         </Link>
@@ -62,7 +63,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
         <aside className="case-sidebar">
           <div className="sticky-card">
-            <div className={`${project.color} border-b-3 border-black p-4 font-mono text-xs font-black uppercase`}>
+            <div className={`${accentBg[project.color]} border-b-3 border-black p-4 font-mono text-xs font-black uppercase`}>
               Build manifest
             </div>
             <div className="p-5">
@@ -91,7 +92,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </aside>
       </section>
 
-      <footer className="mt-10 flex flex-col items-center justify-between gap-5 border-t-4 border-black bg-[#ffea00] px-4 py-8 md:flex-row md:px-8 lg:px-14">
+      <footer className="mt-10 flex flex-col items-center justify-between gap-5 border-t-4 border-black bg-yellow px-4 py-8 md:flex-row md:px-8 lg:px-14">
         <span className="font-mono text-xs font-black uppercase">End of file_{project.number}</span>
         <Link
           href="/#projects"
