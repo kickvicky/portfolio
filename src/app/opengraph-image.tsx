@@ -4,11 +4,11 @@ import { site } from "@/lib/site";
 import { colors } from "@/lib/theme";
 
 // Default social preview for the home page (and any route without its own opengraph-image).
-export const alt = `${site.name} — Backend Engineer building distributed systems`;
+export const alt = `${site.name} — Software Engineer building resilient distributed systems`;
 export const size = ogSize;
 export const contentType = ogContentType;
 
-const stack = ["GO", "REACT", "KAFKA", "POSTGIS", "DISTRIBUTED SYSTEMS"];
+const stack = site.stack.slice(0, 5).map((item) => item.toUpperCase());
 
 export default async function Image() {
   return new ImageResponse(
@@ -41,9 +41,9 @@ export default async function Image() {
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", marginTop: 40, fontSize: 36, fontWeight: 700, letterSpacing: "-0.03em" }}>
-            Backend Engineer at
+            Software Engineer at
             <span style={{ display: "flex", margin: "0 12px", padding: "0 8px", background: colors.yellow }}>Walmart Global Tech</span>
-            building distributed systems.
+            building resilient distributed systems.
           </div>
         </div>
 

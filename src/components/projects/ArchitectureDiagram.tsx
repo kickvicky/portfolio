@@ -13,7 +13,7 @@ export default function ArchitectureDiagram({ project }: { project: Project }) {
             <div className={`architecture-node ${accentBg[index === 1 ? project.color : "white"]}`}>
               <span className="font-mono text-[9px] font-bold">NODE_{String(index + 1).padStart(2, "0")}</span>
               <strong>{label}</strong>
-              <span className="status-dot">LIVE</span>
+              <span className="status-dot">OK</span>
             </div>
             {index < project.architecture.length - 1 && (
               <div className="architecture-arrow" aria-hidden="true">
@@ -25,8 +25,8 @@ export default function ArchitectureDiagram({ project }: { project: Project }) {
         ))}
       </div>
       <div className="architecture-caption">
-        <span>SYSTEM TOPOLOGY / PRODUCTION</span>
-        <span>UPTIME 99.99%</span>
+        <span>SYSTEM TOPOLOGY / {project.status}</span>
+        <span>{project.architecture.length} NODES · {project.year}</span>
       </div>
     </div>
   );

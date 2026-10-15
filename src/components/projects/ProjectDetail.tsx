@@ -1,8 +1,22 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import Arrow from "@/components/icons/Arrow";
 import ArchitectureDiagram from "@/components/projects/ArchitectureDiagram";
 import type { Project } from "@/data/projects";
 import { accentBg } from "@/lib/theme";
+
+function Headline({ lines }: { lines: string[] }) {
+  return (
+    <h2>
+      {lines.map((line, index) => (
+        <Fragment key={line}>
+          {index > 0 && <br />}
+          {line}
+        </Fragment>
+      ))}
+    </h2>
+  );
+}
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -27,8 +41,8 @@ export default function ProjectDetail({ project }: { project: Project }) {
         <div className="mt-8 flex flex-col justify-between gap-5 border-t-3 border-black pt-5 md:flex-row md:items-end">
           <p className="max-w-2xl font-display text-xl font-bold leading-tight md:text-3xl">{project.description}</p>
           <p className="font-mono text-[10px] font-bold uppercase leading-relaxed md:text-right">
-            Role / Backend engineering<br />
-            Scope / Architecture + Build
+            Role / {project.role}<br />
+            Scope / {project.scope}
           </p>
         </div>
       </header>
@@ -41,14 +55,14 @@ export default function ProjectDetail({ project }: { project: Project }) {
         <article className="editorial-copy">
           <div className="case-section">
             <span className="case-index">01 / THE PROBLEM</span>
-            <h2>THE SYSTEM<br />COULDN&apos;T KEEP UP.</h2>
+            <Headline lines={project.problemHeadline} />
             {project.problem.map((paragraph, index) => (
               <p key={paragraph} className={index === 0 ? "lead-paragraph" : ""}>{paragraph}</p>
             ))}
           </div>
           <div className="case-section">
             <span className="case-index">02 / THE SOLUTION</span>
-            <h2>BUILD FOR THE<br />MESSY REAL WORLD.</h2>
+            <Headline lines={project.solutionHeadline} />
             {project.solution.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <div className="result-strip">
@@ -75,18 +89,25 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
               <div className="my-7 border-t-2 border-dashed border-black" />
               <dl className="sidebar-meta">
-                <div><dt>STATUS</dt><dd>SHIPPED</dd></div>
-                <div><dt>TYPE</dt><dd>DISTRIBUTED SYSTEM</dd></div>
+                <div><dt>STATUS</dt><dd>{project.status}</dd></div>
+                <div><dt>TYPE</dt><dd>{project.type}</dd></div>
                 <div><dt>YEAR</dt><dd>{project.year}</dd></div>
               </dl>
-              <a
-                href={project.repository}
-                target="_blank"
-                rel="noreferrer"
-                className="brutal-button mt-7 flex w-full items-center justify-between bg-black px-5 py-4 font-mono text-xs font-black uppercase text-white"
-              >
-                View repository <Arrow diagonal />
-              </a>
+              {project.repositories && project.repositories.length > 0 && (
+                <div className="mt-7 space-y-3">
+                  {project.repositories.map((repo) => (
+                    <a
+                      key={repo.url}
+                      href={repo.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="brutal-button flex w-full items-center justify-between bg-black px-5 py-4 font-mono text-xs font-black uppercase text-white"
+                    >
+                      {repo.label} <Arrow diagonal />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </aside>

@@ -27,6 +27,13 @@ export default function Experience() {
                 )}
               </div>
               <p className="max-w-2xl text-lg font-medium leading-snug">{role.copy}</p>
+              {role.highlights.length > 0 && (
+                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Highlights">
+                  {role.highlights.map((highlight) => (
+                    <li key={highlight} className="tech-tag">{highlight}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </article>
         ))}

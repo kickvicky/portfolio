@@ -155,7 +155,8 @@ button, a {
 .ticker {
   display: flex;
   width: max-content;
-  animation: ticker 24s linear infinite;
+  /* Duration is set per item count in Ticker.tsx so scroll speed stays constant as the list grows. */
+  animation: ticker var(--ticker-duration, 24s) linear infinite;
 }
 
 .ticker span {
@@ -294,6 +295,12 @@ button, a {
 .project-card:hover {
   transform: translate(5px, 5px);
   box-shadow: 4px 4px 0 #fff;
+}
+
+/* The card is one big link (see ProjectCard.tsx), so show the keyboard focus ring on the whole card. */
+.project-card:has(a:focus-visible) {
+  outline: 4px solid var(--color-yellow);
+  outline-offset: 4px;
 }
 
 .project-art {

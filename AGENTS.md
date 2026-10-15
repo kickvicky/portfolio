@@ -25,7 +25,7 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - `src/components/contact/ContactForm.tsx` — the only Client Component (`"use client"`)
 - `src/components/icons/*` — SVG icons
 - `src/data/*` — site content (projects, roles, hobbies). Edit content here, not in components.
-- `src/lib/site.ts` — site name, URL, email, socials, indexing flag
+- `src/lib/site.ts` — site name, URL, email, socials, headline `stack` (drives the ticker + home OG image), indexing flag
 - `src/lib/theme.ts` — TS mirror of the `@theme` colours (for OG images / meta tags) + `Accent` type and `accentBg` class map
 
 ## Conventions
