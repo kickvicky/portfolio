@@ -6,7 +6,9 @@ import { accentBg } from "@/lib/theme";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="project-card group">
+    // Stretched link: the Link's ::after covers the whole card, so any click opens the case study while
+    // keeping a single, properly named link for keyboard and screen-reader users.
+    <article className="project-card group relative">
       <div className="project-art">
         <ProjectArt type={project.art} />
       </div>
@@ -19,9 +21,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         <p className="mt-3 min-h-14 font-medium leading-snug">{project.description}</p>
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-6 flex w-full items-center justify-between border-t-2 border-black pt-4 font-mono text-xs font-black uppercase"
+          className="mt-6 flex w-full items-center justify-between border-t-2 border-black pt-4 font-mono text-xs font-black uppercase outline-none after:absolute after:inset-0 after:content-['']"
         >
-          Inspect case study{" "}
+          <span>
+            Inspect case study<span className="sr-only">: {project.title}</span>
+          </span>{" "}
           <span className="arrow-box">
             <Arrow diagonal />
           </span>

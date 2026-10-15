@@ -32,7 +32,7 @@ export default function Hero() {
           </a>
         </div>
         <p className="max-w-3xl font-display text-2xl font-bold leading-tight tracking-tight md:text-4xl">
-          Backend Engineer at <span className="marker">Walmart Global Tech</span> building distributed systems.
+          Software Engineer at <span className="marker">Walmart Global Tech</span> building resilient distributed systems.
         </p>
       </div>
       <div className="absolute bottom-6 right-6 hidden items-center gap-3 font-mono text-[10px] font-bold uppercase md:flex">
