@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import type { ReactNode } from "react";
@@ -55,7 +56,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        {/* Cookieless page-view analytics. Only reports on Vercel deployments, once enabled in the project's Analytics tab. */}
+        <Analytics />
+      </body>
     </html>
   );
 }

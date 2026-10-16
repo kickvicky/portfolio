@@ -1,4 +1,5 @@
 import ContactForm from "@/components/contact/ContactForm";
+import VisitorCounter from "@/components/home/VisitorCounter";
 import { site } from "@/lib/site";
 
 export default function Contact() {
@@ -27,7 +28,6 @@ export default function Contact() {
                 Have a hard systems problem, an interesting role, or a very specific coffee recommendation?
               </p>
               <div className="mt-12 space-y-3 font-mono text-xs font-bold">
-                <a href={`mailto:${site.email}`} className="social-link">EMAIL ↗</a>
                 <a href={site.socials.github} target="_blank" rel="noreferrer" className="social-link">GITHUB ↗</a>
                 <a href={site.socials.linkedin} target="_blank" rel="noreferrer" className="social-link">LINKEDIN ↗</a>
               </div>
@@ -39,6 +39,7 @@ export default function Contact() {
           {/* Server Component on a static page: the year is fixed at build time (refreshes on each deploy). */}
           <span>© {new Date().getFullYear()} {site.name}</span>
           <span>Designed with intent / Built with caffeine</span>
+          <VisitorCounter />
           <a href="#top">Back to top ↑</a>
         </footer>
       </div>

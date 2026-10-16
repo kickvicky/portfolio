@@ -19,10 +19,12 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - `src/app/opengraph-image.tsx`, `src/app/projects/[slug]/opengraph-image.tsx` — social preview PNGs generated at build time; shared pieces in `src/lib/og.tsx` (inline styles only, no Tailwind)
 - `src/assets/fonts/*.woff` — font files for the OG images (Satori can't use `next/font` or woff2)
 - `src/app/globals.css` — Tailwind import + all custom CSS classes
-- `src/actions/contact.ts` — Server Action for the contact form (sends email via Resend)
+- `src/actions/contact.ts` — Server Action for the contact form (sends email via Resend; rate limited via Upstash)
+- `src/app/api/views/route.ts` — POST endpoint behind the footer visitor counter (Redis `INCR`, deduped per visitor)
+- `src/lib/redis.ts` — shared Upstash client (`null` when unconfigured), per-deployment `keyPrefix`, hashed `visitorId`. Server-only.
 - `src/components/home/*` — home page sections
 - `src/components/projects/*` — project card, art, architecture diagram, detail view
-- `src/components/contact/ContactForm.tsx` — the only Client Component (`"use client"`)
+- Client Components (`"use client"`): `src/components/contact/ContactForm.tsx`, `src/components/home/VisitorCounter.tsx`
 - `src/components/icons/*` — SVG icons
 - `src/data/*` — site content (projects, roles, hobbies). Edit content here, not in components.
 - `src/lib/site.ts` — site name, URL, email, socials, headline `stack` (drives the ticker + home OG image), indexing flag
