@@ -8,6 +8,7 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - `pnpm build` — production build into `.next/`
 - `pnpm start` — serve the production build locally
 - `pnpm typecheck` — `tsc --noEmit`
+- `pnpm lint` — ESLint (`eslint.config.mjs`: `eslint-config-next` Core Web Vitals + TypeScript rules)
 - `pnpm format` — oxfmt
 
 ## Project structure
@@ -40,6 +41,7 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - Colours: use the brand tokens (`ink`, `paper`, `charcoal`, `yellow`, `lime`, `pink`) — e.g. `bg-yellow`, `text-pink`, `var(--color-ink)` in CSS. No raw hex / `bg-[#…]` arbitrary values. Adding or changing a colour means updating both `@theme` in `globals.css` and `colors` in `src/lib/theme.ts`.
 - Content entries pick colours by token name (`color: "lime"`, typed as `Accent`); components map it to a class with `accentBg[...]`. Never build class names dynamically (`bg-${x}`) — Tailwind can't detect them.
 - Fonts are exposed as CSS variables `--font-space-grotesk` and `--font-space-mono`.
+- On-screen `//` labels (e.g. `// THINGS I'VE BUILT`) must be string literals in JSX — `{"// LABEL"}` — or `react/jsx-no-comment-textnodes` flags them as comments.
 - In JSX text, escape apostrophes as `&apos;`. In strings, use double quotes when the text contains an apostrophe.
 
 ## Environment variables

@@ -81,7 +81,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               Build manifest
             </div>
             <div className="p-5">
-              <p className="mb-4 font-mono text-[10px] font-bold uppercase text-black/50">// Technology stack</p>
+              <p className="mb-4 font-mono text-[10px] font-bold uppercase text-black/50">{"// Technology stack"}</p>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map((technology) => (
                   <span key={technology} className="tech-tag">{technology}</span>

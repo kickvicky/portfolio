@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <section id="contact" className="border-t-4 border-black bg-pink px-4 py-24 md:px-8">
       <div className="mx-auto max-w-5xl">
-        <p className="mb-5 text-center font-mono text-xs font-black uppercase">// Connection request pending</p>
+        <p className="mb-5 text-center font-mono text-xs font-black uppercase">{"// Connection request pending"}</p>
         <h2 className="mb-12 text-center font-display text-5xl font-black leading-[0.8] tracking-[-0.07em] sm:text-7xl md:text-9xl">
           SAY HELLO.
         </h2>

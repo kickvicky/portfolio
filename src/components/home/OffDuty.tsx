@@ -27,7 +27,7 @@ export default function OffDuty() {
           <Star className="absolute right-3 top-3 z-10 w-20 rotate-12 text-lime drop-shadow-[4px_4px_0_var(--color-ink)] md:w-24" />
         </article>
         <article className="bento-note bg-lime">
-          <p className="eyebrow">// BETA LOG</p>
+          <p className="eyebrow">{"// BETA LOG"}</p>
           <strong>V6</strong>
           <p className="font-mono text-xs font-bold uppercase">Current project grade</p>
           <div className="mt-auto barcode" />

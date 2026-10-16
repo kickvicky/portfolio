@@ -6,7 +6,7 @@ export default function Projects() {
     <section id="projects" className="border-y-4 border-black bg-charcoal px-4 py-24 text-white md:px-8 lg:px-14">
       <header className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
-          <p className="eyebrow text-lime">// THINGS I&apos;VE BUILT</p>
+          <p className="eyebrow text-lime">{"// THINGS I'VE BUILT"}</p>
           <h2 className="section-title text-white">PROJECT<br />FILES.</h2>
         </div>
         <p className="max-w-sm font-mono text-xs leading-relaxed text-white/70">

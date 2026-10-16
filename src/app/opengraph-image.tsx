@@ -63,7 +63,7 @@ export default async function Image() {
           <div style={{ display: "flex", gap: 18 }}>
             {stack.map((item, index) => (
               <div key={item} style={{ display: "flex", gap: 18 }}>
-                {index > 0 && <span style={{ color: colors.pink }}>//</span>}
+                {index > 0 && <span style={{ color: colors.pink }}>{"//"}</span>}
                 {item}
               </div>
             ))}
