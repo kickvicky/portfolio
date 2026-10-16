@@ -10,6 +10,8 @@ export const site = {
   description:
     "Software Engineer at Walmart Global Tech building resilient, high-availability distributed systems with Java, Spring, Go, and Next.js.",
   url: resolveSiteUrl(),
+  // Public résumé (no phone / email) served from public/. To update it, replace the file and redeploy.
+  resume: "/Vignesh_Annamalai_Resume.pdf",
   socials: {
     github: "https://github.com/kickvicky",
     linkedin: "https://www.linkedin.com/in/vignesh-annamalai-318757199/",

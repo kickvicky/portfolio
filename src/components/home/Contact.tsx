@@ -28,6 +28,7 @@ export default function Contact() {
                 Have a hard systems problem, an interesting role, or a very specific coffee recommendation?
               </p>
               <div className="mt-12 space-y-3 font-mono text-xs font-bold">
+                <a href={site.resume} target="_blank" rel="noreferrer" className="social-link">RÉSUMÉ ↓</a>
                 <a href={site.socials.github} target="_blank" rel="noreferrer" className="social-link">GITHUB ↗</a>
                 <a href={site.socials.linkedin} target="_blank" rel="noreferrer" className="social-link">LINKEDIN ↗</a>
               </div>
