@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="page-counter absolute right-4 top-24 md:right-8 md:top-28">
         <span>PAGE</span>
         <strong>01</strong>
-        <span>/ 04</span>
+        <span>/ 05</span>
       </div>
       <div className="mb-5 flex items-center gap-3 font-mono text-xs font-bold uppercase">
         <span className="inline-block h-3 w-3 animate-pulse border-2 border-black bg-lime" />

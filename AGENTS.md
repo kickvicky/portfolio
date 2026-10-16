@@ -7,13 +7,14 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - `pnpm dev` — dev server on http://localhost:3000 (Turbopack, hot reload)
 - `pnpm build` — production build into `.next/`
 - `pnpm start` — serve the production build locally
-- `pnpm typecheck` — `tsc --noEmit`
+- `pnpm typecheck` — `next typegen && tsc --noEmit`
 - `pnpm lint` — ESLint (`eslint.config.mjs`: `eslint-config-next` Core Web Vitals + TypeScript rules)
 - `pnpm format` — oxfmt
 
 ## Project structure
 
-- `src/app/layout.tsx` — root layout: fonts (`next/font`), site-wide metadata, imports `globals.css`
+- `src/app/layout.tsx` — root layout: fonts (`next/font`), site-wide metadata, imports `globals.css`, Vercel `<Analytics />`
+- `next.config.ts` — allowed remote image hosts + security headers for every route
 - `src/app/page.tsx` — home page; composes the section components
 - `src/app/projects/[slug]/page.tsx` — case study pages, statically generated via `generateStaticParams`
 - `src/app/not-found.tsx`, `robots.ts`, `sitemap.ts`, `icon.svg` — 404 page, SEO files, favicon
@@ -28,7 +29,8 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 - Client Components (`"use client"`): `src/components/contact/ContactForm.tsx`, `src/components/home/VisitorCounter.tsx`
 - `src/components/icons/*` — SVG icons
 - `src/data/*` — site content (projects, roles, hobbies). Edit content here, not in components.
-- `src/lib/site.ts` — site name, URL, email, socials, headline `stack` (drives the ticker + home OG image), indexing flag
+- `src/lib/site.ts` — site name, URL, socials, résumé path, headline `stack` (drives the ticker + home OG image), indexing flag
+- `public/Vignesh_Annamalai_Resume.pdf` — public résumé (no phone/email), linked from the contact panel via `site.resume`
 - `src/lib/theme.ts` — TS mirror of the `@theme` colours (for OG images / meta tags) + `Accent` type and `accentBg` class map
 
 ## Conventions
@@ -46,7 +48,13 @@ Next.js (App Router) + React 19 + Tailwind CSS v4 portfolio, deployed to Vercel 
 
 ## Environment variables
 
-See `.env.example`. Secrets go in `.env.local` (git-ignored) locally and in Vercel project settings in production.
+See `.env.example`. Secrets go in `.env.local` (git-ignored) locally and in Vercel project settings in production — never in `.env.example`, which is committed.
+
+- `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` — contact form email. If unset in dev, messages are logged instead of sent.
+- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — rate limiting + visitor counter. If unset, both switch off.
+- `NEXT_PUBLIC_SITE_URL` — canonical URL; falls back to Vercel's production URL.
+
+Redis keys are prefixed `portfolio:<VERCEL_ENV>` (`development` locally), so local and preview runs never touch production data.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
